@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
@@ -10,19 +9,11 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-import CircularProgress from "@mui/material/CircularProgress";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import { useState } from "react"; // Import useState
-import ProductList from "../features/product/ProductList";
-
+import { useState } from "react";  
+import ProductList from "../../features/product/ProductList/ProductList";
 
 const MAX = 300;
 const MIN = 0;
@@ -32,8 +23,7 @@ const marks = [
 ];
 
 const Products = () => {
-
-    const [isFiltersOpen, setIsFiltersOpen] = useState(false); //  Add state for filter visibility
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false); //  Add state for filter visibility
 
   return (
     <>
@@ -45,8 +35,10 @@ const Products = () => {
             <Button
               variant="outlined"
               fullWidth
-              onClick={() => setIsFiltersOpen(!isFiltersOpen)}  // Toggle filter visibility
-              startIcon={isFiltersOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+              onClick={() => setIsFiltersOpen(!isFiltersOpen)} // Toggle filter visibility
+              startIcon={
+                isFiltersOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />
+              }
               sx={{
                 justifyContent: "space-between",
                 p: 2,
@@ -58,7 +50,11 @@ const Products = () => {
           </Box>
 
           {/* Filters Section */}
-          <div className={`col-md-3 ${isFiltersOpen ? "block" : "d-none d-md-block"}`}>
+          <div
+            className={`col-md-3 ${
+              isFiltersOpen ? "block" : "d-none d-md-block"
+            }`}
+          >
             <Box sx={{ marginBottom: 4 }}>
               <Box
                 sx={{
@@ -160,7 +156,7 @@ const Products = () => {
                   // onChange={handleRatingChange} <-- Your handler
                 >
                   <FormControlLabel
-                    value={4}  //  Keep the values.
+                    value={4} //  Keep the values.
                     control={<Radio />}
                     label="4 Stars & above"
                   />
@@ -211,11 +207,11 @@ const Products = () => {
           </div>
 
           {/* Products Grid */}
-           <ProductList />
+          <ProductList />
         </div>
       </main>
 
-        {/* Removed Snackbar, you will add if needed */}
+      {/* Removed Snackbar, you will add if needed */}
     </>
   );
 };

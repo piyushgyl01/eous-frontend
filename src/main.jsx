@@ -8,11 +8,11 @@ import { Provider } from "react-redux";
 import store from "./app/store.js";
 
 import Navbar from "./components/Navbar.jsx";
-import Cart from "./pages/Cart.jsx";
-import Wishlist from "./pages/Wishlist.jsx";
+import Cart from "./pages/cart/Cart.jsx";
+import Wishlist from "./pages/wishlist/Wishlist.jsx";
 import Profile from "./pages/Profile.jsx";
 import Homepage from "./pages/Homepage.jsx";
-import Products from "./pages/Products.jsx";
+import Products from "./pages/products/Products.jsx";
 
 const router = createBrowserRouter([
   {
