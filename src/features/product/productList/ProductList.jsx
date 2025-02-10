@@ -54,13 +54,15 @@ export default function ProductList() {
           <div className="row">
             <p>({products.length} products)</p>
             {/* Product Grid */}
-            <ProductCard
-              products={products}
+            {products.map((product) => (
+        <div className="col-md-4 my-3" key={product._id}> <ProductCard
+              product={product}
               handleUpdateCart={handleUpdateCart}
               handleUpdateWishlist={handleUpdateWishlist}
               updatingCartId={updatingCartId}
               updatingId={updatingId}
-            />
+            /> </div>
+          ))}
           </div>
         </>
       )}

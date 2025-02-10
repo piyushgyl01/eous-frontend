@@ -13,8 +13,8 @@ export default function WishlistIcon({
     <Box
       sx={{
         position: "absolute",
-        top: 10,
-        right: 10,
+        top: 8,
+        right: 16,
         backgroundColor: "#fff",
         borderRadius: "50%",
         padding: 0.5,
@@ -24,12 +24,12 @@ export default function WishlistIcon({
     >
       <IconButton
         onClick={() => handleUpdateWishlist(item._id)}
-        disabled={updatingId === item._id}
+        disabled={updatingId === item?._id}
         sx={{ "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.8)" } }}
       >
-        {updatingId === item._id ? (
+        {updatingId === item?._id ? (
           <CircularProgress size={20} sx={{ color: "gray" }} />
-        ) : item.isWishlisted ? (
+        ) : item?.isWishlisted ? (
           <FavoriteIcon sx={{ color: "red", "&:hover": { color: "gray" } }} />
         ) : (
           <FavoriteBorderIcon

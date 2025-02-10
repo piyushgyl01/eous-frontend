@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import WishlistIcon from "../../../components/WishlistIcon";
 
 export default function ProductCard({
-  products,
+  product,
   handleUpdateCart,
   handleUpdateWishlist,
   updatingCartId,
@@ -22,9 +22,7 @@ export default function ProductCard({
 }) {
   return (
     <>
-      {products.map((product) => (
-        <div className="col-md-4 my-3" key={product._id}>
-          <Card sx={{ maxWidth: 345, position: "relative", padding: 2 }}>
+           <Card sx={{ maxWidth: 345, position: "relative", padding: 2 }}>
             {/* Wishlist Icon */}
             <WishlistIcon
               item={product}
@@ -32,19 +30,22 @@ export default function ProductCard({
               handleUpdateWishlist={handleUpdateWishlist}
             />
             {/* Product Image */}
-            <Link to={` `}>
+            <Link to={`/products/${product?.productName}/${product?._id}`}>
               <CardMedia
                 component="img"
                 height="300"
-                image={product.productImg}
-                alt={product.productName}
+                image={product?.productImg}
+                alt={product?.productName}
               />
             </Link>
             {/* Product Details */}
             <CardContent>
-              <Link className="text-decoration-none text-dark" to={` `}>
+              <Link
+                className="text-decoration-none text-dark"
+                to={`/products/${product?.productName}/${product?._id}`}
+              >
                 <Typography variant="h6" component="div" align="center">
-                  {product.productName}
+                  {product?.productName}
                 </Typography>
               </Link>
 
@@ -54,33 +55,33 @@ export default function ProductCard({
                 align="center"
                 sx={{ fontWeight: "bold", marginY: 1 }}
               >
-                ${product.productPrice}
+                ${product?.productPrice}
               </Typography>
               {/* Add to Cart Button */}
               <Button
                 variant="contained"
                 fullWidth
-                onClick={() => handleUpdateCart(product._id)}
+                onClick={() => handleUpdateCart(product?._id)}
                 disabled={
-                  updatingCartId === product._id || product.isAddedToCart
+                  updatingCartId === product?._id || product?.isAddedToCart
                 }
                 sx={{
-                  backgroundColor: product.isAddedToCart
+                  backgroundColor: product?.isAddedToCart
                     ? "#d3d3d3"
                     : "primary.main",
                   color: "white",
                   textTransform: "none",
                   fontWeight: "bold",
                   "&:hover": {
-                    backgroundColor: product.isAddedToCart
+                    backgroundColor: product?.isAddedToCart
                       ? "#d3d3d3"
                       : "primary.dark",
                   },
                 }}
               >
-                {updatingCartId === product._id ? (
+                {updatingCartId === product?._id ? (
                   <CircularProgress size={24} color="inherit" />
-                ) : product.isAddedToCart ? (
+                ) : product?.isAddedToCart ? (
                   "Added to Cart"
                 ) : (
                   "Add to Cart"
@@ -88,8 +89,6 @@ export default function ProductCard({
               </Button>
             </CardContent>
           </Card>
-        </div>
-      ))}
-    </>
+      </>
   );
 }

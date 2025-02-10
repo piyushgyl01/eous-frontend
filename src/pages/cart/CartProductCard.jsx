@@ -9,6 +9,8 @@ import Paper from "@mui/material/Paper";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
+import { Link } from "react-router";
+
 export default function CartProductCard({
   item,
   quantities,
@@ -23,19 +25,23 @@ export default function CartProductCard({
       <div className="row">
         {/* Product Image */}
         <div className="col-md-4">
-          <CardMedia
-            component="img"
-            height="200"
-            image={item.productImg}
-            alt={item.productName}
-            sx={{ objectFit: "cover", borderRadius: 1 }}
-          />
+          <Link to={`/products/${item.productName}/${item._id}`}>
+            <CardMedia
+              component="img"
+              height="200"
+              image={item.productImg}
+              alt={item.productName}
+              sx={{ objectFit: "cover", borderRadius: 1 }}
+            />
+          </Link>
         </div>
         {/* Product Details */}
         <div className="col-md-8">
-          <Typography variant="h6" gutterBottom>
-            {item.productName}
-          </Typography>
+          <Link to={`/products/${item.productName}/${item._id}`} className="text-decoration-none text-dark">
+            <Typography variant="h6" gutterBottom>
+              {item.productName}
+            </Typography>
+          </Link>
           {/* Price */}
           <Typography variant="h6" sx={{ mb: 2 }}>
             ${item.productPrice * (quantities[item._id] || 1)}
