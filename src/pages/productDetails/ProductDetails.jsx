@@ -40,7 +40,7 @@ import useUpdateCart from "../../customHooks/useUpdateCart";
 import useUpdateWishlist from "../../customHooks/useUpdateWishlist";
 import { Divider } from "@mui/material";
 import ProductList from "../../features/product/ProductList/ProductList";
-import ProductCard from "../../features/product/productList/ProductCard";
+import ProductCard from "../../features/product/ProductCard";
 import NotificationSnackbar from "../../components/NotificationSnackbar";
 import LoadingCircle from "../../components/LoadingCircle";
 import ProductDetailsCard from "./DetailCard";
@@ -254,13 +254,14 @@ export default function ProductDetails() {
               </div>
             </div>
             <div className="row">
-            <DetailCard
-              product={clickedProduct}
-              handleUpdateCart={handleUpdateCart}
-              handleUpdateWishlist={handleUpdateWishlist}
-              updatingCartId={updatingCartId}
-              updatingId={updatingId}
-            /></div>
+              <DetailCard
+                product={clickedProduct}
+                handleUpdateCart={handleUpdateCart}
+                handleUpdateWishlist={handleUpdateWishlist}
+                updatingCartId={updatingCartId}
+                updatingId={updatingId}
+              />
+            </div>
             {/* Related Products */}
             <div className="row">
               {randomProducts.map((product) => (

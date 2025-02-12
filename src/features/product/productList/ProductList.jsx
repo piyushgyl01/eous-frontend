@@ -10,7 +10,7 @@ import {
 
 // Components
 import LoadingCircle from "../../../components/LoadingCircle";
-import ProductCard from "./ProductCard";
+import ProductCard from "../ProductCard";
 import NotificationSnackbar from "../../../components/NotificationSnackbar";
 
 // customHooks
@@ -55,14 +55,17 @@ export default function ProductList() {
             <p>({products.length} products)</p>
             {/* Product Grid */}
             {products.map((product) => (
-        <div className="col-md-4 my-3" key={product._id}> <ProductCard
-              product={product}
-              handleUpdateCart={handleUpdateCart}
-              handleUpdateWishlist={handleUpdateWishlist}
-              updatingCartId={updatingCartId}
-              updatingId={updatingId}
-            /> </div>
-          ))}
+              <div className="col-md-4 my-3" key={product._id}>
+                {" "}
+                <ProductCard
+                  product={product}
+                  handleUpdateCart={handleUpdateCart}
+                  handleUpdateWishlist={handleUpdateWishlist}
+                  updatingCartId={updatingCartId}
+                  updatingId={updatingId}
+                />{" "}
+              </div>
+            ))}
           </div>
         </>
       )}
